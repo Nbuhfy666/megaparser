@@ -1,2 +1,25 @@
-# megaparser
-MegaParser (MP) - best parser for python ever. created for easy working with Files, Web, Time, Random and Returns.
+# MegaParser [RUS]
+**MegaParser (MP) - самый лучший парсер для Python.**
+**Создан для легкой работы с:**
+* Файлами
+* Web (Сайты, Браузер)
+* Возвращения текста
+* Рандомизации
+* Временем
+* Типов (для писания)
+**Версии:** 
+mp.<цифра_по_английски>
+**Патчи:**
+mp.<версия>.<цифра>
+
+**Пример версий:**
+* mp.one
+**Пример патчей:**
+* mp.one.1
+
+## Версии
+**Мне кажется, я выпущу эти версии:**
+* mp.one
+* mp.one.1
+* mp.one.2
+* mp.one.3
