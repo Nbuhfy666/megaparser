@@ -5,25 +5,28 @@ import random
 from datetime import datetime
 import time
 from http.server import HTTPServer, SimpleHTTPRequestHandler
+from colorama import init, Fore
+
+init(autoreset=False)
 
 class Types:
     def __init__(self):
         return (
-            "FileNameOrPath ( str )",
-            "IntegerText    ( int )",
-            "PrefixText     ( str )",
-            "StringText     ( str )",
-            "SiteType       ( str )",
-            "SiteType_      ( requests.code )",
-            "HTTPPort       ( int )",
-            "HTTPHost       ( str )",
-            "Choices        ( dict )",
-            "Choice1        ( str )",
-            "Choice2        ( str )",
-            'TimeFormat     ( str: "DD/MM/YYYY HH:MM" )',
-            "FormatTime     ( str )"
+            f"FileNameOrPath ( {Fore.CYAN}str{Fore.RESET} )",
+            f"IntegerText    ( {Fore.CYAN}int{Fore.RESET} )",
+            f"PrefixText     ( {Fore.CYAN}str{Fore.RESET} )",
+            f"StringText     ( {Fore.CYAN}str{Fore.RESET} )",
+            f"SiteType       ( {Fore.CYAN}str{Fore.RESET} )",
+            f"SiteType_      ( {Fore.CYAN}requests.code{Fore.RESET} )",
+            f"HTTPPort       ( {Fore.CYAN}int{Fore.RESET} )",
+            f"HTTPHost       ( {Fore.CYAN}str{Fore.RESET} )",
+            f"Choices        ( {Fore.CYAN}dict{Fore.RESET} )",
+            f"Choice1        ( {Fore.CYAN}str{Fore.RESET} )",
+            f"Choice2        ( {Fore.CYAN}str{Fore.RESET} )",
+            f'TimeFormat     ( {Fore.CYAN}str: "DD/MM/YYYY HH:MM"{Fore.RESET} )',
+            f"FormatTime     ( {Fore.CYAN}str{Fore.RESET} )"
         )
-    #NameType      = <type>                             #TODO: <class '{class}'>
+    #NameType      = <type>                             #TODO: <class '{class_where_using_type}'>
     FileNameOrPath = str                                #TODO: <class 'FileWorking'>
     IntegerText    = int                                #TODO: <class 'FileWorking'>
     PrefixText     = str                                #TODO: <class 'Returns'>
@@ -37,6 +40,7 @@ class Types:
     Choice2        = str                                #TODO: <class 'WorkingRandom'>
     TimeFormat     = "%d/%m/%Y %H:%M"                   #TODO: <class 'WorkingTime'>
     FormatType     = str                                #TODO: <class 'WorkingTime'>
+    Version        = "mp.one.1"                         #TODO: <class 'Console'>
 
 class FileWorking(Types):
     def __init__(self):
@@ -86,11 +90,11 @@ class Returns(Types):
         if not end and not prefix:
             return text
         elif end and prefix:
-            return f"{prefix} | {text} {end}"
+            return f"{Fore.GREEN}{prefix}{Fore.RESET} | {text} {end}"
         elif end:
             return f"{text} {end}"
         elif prefix:
-            return F"{prefix} | {text}"
+            return F"{Fore.GREEN}{prefix}{Fore.RESET} | {text}"
 
     def InputText(
         prompt: object = "", /
@@ -100,10 +104,10 @@ class Returns(Types):
 class WorkingWeb(Types):
     def __init__(self):
             return (
-                "OpenSite       ( function )",
-                "Mozilla        ( function )",
-                "Chrome         ( function )",
-                "Server         ( function )"
+                f"OpenSite       ( {Fore.CYAN}function{Fore.RESET} )",
+                f"Mozilla        ( {Fore.CYAN}function{Fore.RESET} )",
+                f"Chrome         ( {Fore.CYAN}function{Fore.RESET} )",
+                f"Server         ( {Fore.CYAN}function{Fore.RESET} )"
             )
     def OpenSite(
             self,
@@ -150,8 +154,8 @@ class WorkingWeb(Types):
 class WorkingRandom(Types):
     def __init__(self):
             return (
-                "Choice         ( function )",
-                "Randint        ( function )"
+                f"Choice         ( {Fore.CYAN}function{Fore.RESET} )",
+                f"Randint        ( {Fore.CYAN}function{Fore.RESET} )"
             )
     def Choice(
             self,
@@ -169,9 +173,9 @@ class WorkingRandom(Types):
 class WorkingTime(Types, Returns):
     def __init__(self):
                 return (
-                    "Now            ( function )",
-                    "StrfTime       ( function )",
-                    "Sleep          ( function )"
+                    f"Now            ( {Fore.CYAN}function{Fore.RESET} )",
+                    f"StrfTime       ( {Fore.CYAN}function{Fore.RESET} )",
+                    f"Sleep          ( {Fore.CYAN}function{Fore.RESET} )"
                 )
     @staticmethod
     def Now(self):
@@ -197,8 +201,8 @@ class Console(Types, Returns, WorkingRandom, WorkingTime, WorkingWeb, FileWorkin
             print(Returns.ReturnText(f"{Value}", prefix=f"[Command '{Key}']"))
         while True:
             try:
-                print(   f"_____{__file__}")
-                _ = input("Enter Text: ")
+                print(    f"_____{Fore.CYAN}{__file__}")
+                _ = input(f"Enter Text:{Fore.CYAN} ")
                 if _ == "exit":
                     break 
                 elif _ == ".types":
